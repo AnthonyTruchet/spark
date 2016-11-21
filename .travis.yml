@@ -47,8 +47,8 @@ install:
   # Force Spark's build/mvn to download and use its own recent version of maven
   - export FORCE_MVN=1
   - export SPARK_TEST_TAGS_EXCLUDED_DEFAULT=
-  - dev/criteo/build-with-maven.sh install
-  - dev/criteo/test-with-maven.sh
+  - travis_wait 10 dev/criteo/build-with-maven.sh -B -q install
+  - travis_wait 20 dev/criteo/test-with-maven.sh -B -q
 
 # 6. Run lint-java.
 script:
